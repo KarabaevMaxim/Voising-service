@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{C6FB78F8-7B6C-4EDF-921F-14DBCF64DE53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{8D3AC77D-09A6-470A-B5FF-D71C6BD54D76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{A41806CD-57A1-4349-8D50-5F184A5C3757}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A41806CD-57A1-4349-8D50-5F184A5C3757}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A41806CD-57A1-4349-8D50-5F184A5C3757}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D3AC77D-09A6-470A-B5FF-D71C6BD54D76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D3AC77D-09A6-470A-B5FF-D71C6BD54D76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D3AC77D-09A6-470A-B5FF-D71C6BD54D76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D3AC77D-09A6-470A-B5FF-D71C6BD54D76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A41806CD-57A1-4349-8D50-5F184A5C3757} = {C6FB78F8-7B6C-4EDF-921F-14DBCF64DE53}
