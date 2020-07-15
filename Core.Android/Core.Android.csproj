@@ -46,18 +46,14 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Class1.cs" />
-        <Compile Include="Resources\Resource.Designer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Settings\SettingsStorage.cs" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="Resources\AboutResources.txt" />
-    </ItemGroup>
-    <ItemGroup>
-        <AndroidResource Include="Resources\values\strings.xml" />
-    </ItemGroup>
-    <ItemGroup>
-        <Folder Include="Resources\drawable\" />
+      <ProjectReference Include="..\Core\Core.csproj">
+        <Project>{a41806cd-57a1-4349-8d50-5f184a5c3757}</Project>
+        <Name>Core</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
