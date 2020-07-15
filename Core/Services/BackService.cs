@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Models;
 using Models.Client;
@@ -15,18 +16,22 @@ namespace Core.Services
 
     private readonly LoginService _loginService;
 
-    public async Task<WebResponse<SendBookResponse>> SendBookRequest(BookFile book)
+    public async Task<WebResponse<SendBookResponse?>> SendBookRequest(BookFile book)
     {
       if (_loginService.AuthorizedUser == null)
-        return WebResponse<SendBookResponse>.Default;
+        return WebResponse<SendBookResponse?>.Default;
       
       var client = new RestClient(ServerAddress);
       var request = new RestRequest("/upload-book", Method.POST);
       request.AddParameter("userId", _loginService.AuthorizedUser.Id);
       request.AddFile(book.FileName, book.Bytes, book.FileName, "application/zip");
       var response = await client.ExecuteAsync<SendBookResponse>(request);
-      return new WebResponse<SendBookResponse>((int)response.StatusCode, response.ErrorMessage, response.Data);
-      
+      return new WebResponse<SendBookResponse?>((int)response.StatusCode, response.ErrorMessage, response.Data);
+    }
+
+    public async Task<WebResponse<SendChapterReponse?>> SendChapterRequest(BookFile book)
+    {
+      throw new NotImplementedException();
     }
     
     public BackService(LoginService loginService)

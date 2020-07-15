@@ -1,4 +1,6 @@
+using System;
 using Models;
+using Models.Domain;
 
 namespace Core.Services
 {
@@ -8,7 +10,11 @@ namespace Core.Services
     
     public bool Login(string login, string password)
     {
-      AuthorizedUser = new User("Max");
+      AuthorizedUser = new User
+      {
+        Id = Guid.NewGuid(),
+        Name = "Max"
+      };
       return true;
     }
   }
