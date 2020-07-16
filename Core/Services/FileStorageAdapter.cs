@@ -15,6 +15,12 @@ namespace Core.Services
     private const string ArchiveFolder = "Files";
 
     private readonly string[] _supportedFormats = new[] {"epub", "fb2", "pdf", "txt"};
+
+    public bool IsBookFile(string fileName)
+    {
+      var extension = Path.GetExtension(fileName);
+      return _supportedFormats.Any(f => f.Equals(extension, StringComparison.OrdinalIgnoreCase));
+    }
     
     /// <summary>
     /// Готовит файл книги к отправке на сервер.
@@ -24,7 +30,7 @@ namespace Core.Services
       if (!File.Exists(fullFileName))
         return null;
 
-      if (!_supportedFormats.Any(f => f.Equals(Path.GetExtension(fullFileName), StringComparison.OrdinalIgnoreCase)))
+      if (!IsBookFile(Path.GetFileName(fullFileName)))
         return null;
       
       var archiveName = Path.Combine(ArchiveFolder, $"{Path.GetFileNameWithoutExtension(fullFileName)}.zip");
@@ -32,7 +38,6 @@ namespace Core.Services
       
       return new BookFile
       {
-        Id = Guid.NewGuid(),
         FileName = Path.GetFileName(fullFileName),
         FileExtension = Path.GetExtension(fullFileName),
         FullFileName = fullFileName,
@@ -64,7 +69,7 @@ namespace Core.Services
       return await GetBytesFromStream(decompressionStream);
     }
     
-    private async Task<byte[]> GetBytesFromStream(Stream input)
+    public async Task<byte[]> GetBytesFromStream(Stream input)
     {
       await using var ms = new MemoryStream();
       await input.CopyToAsync(ms);

@@ -23,6 +23,7 @@
         <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
         <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
         <Nullable>enable</Nullable>
+        <LangVersion>default</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <DebugSymbols>True</DebugSymbols>
@@ -53,36 +54,36 @@
         <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="Mono.Android.Export, Version=1.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065">
+          <HintPath>..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\10.2.0.100\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v4.4\Mono.Android.Export.dll</HintPath>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Xml" />
         <Reference Include="System.Core" />
         <Reference Include="Mono.Android" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Activities\ContentShareActivity.cs" />
+        <Compile Include="Activities\MainActivity.cs" />
         <Compile Include="Application.cs" />
-        <Compile Include="MainActivity.cs" />
+        <Compile Include="Bootstrapper.cs" />
         <Compile Include="Resources\Resource.Designer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="Resources\AboutResources.txt" />
         <None Include="Properties\AndroidManifest.xml" />
         <None Include="Assets\AboutAssets.txt" />
     </ItemGroup>
     <ItemGroup>
-        <AndroidResource Include="Resources\layout\activity_main.axml">
-            <SubType>Designer</SubType>
-        </AndroidResource>
+        <AndroidResource Include="Resources\layout\main_screen.xml" />
         <AndroidResource Include="Resources\values\colors.xml" />
         <AndroidResource Include="Resources\values\ic_launcher_background.xml" />
         <AndroidResource Include="Resources\values\strings.xml" />
         <AndroidResource Include="Resources\values\styles.xml" />
     </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="MvvmCross" Version="6.4.2" />
         <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Activities" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Core.Android\Core.Android.csproj">
@@ -96,6 +97,10 @@
       <ProjectReference Include="..\LocalData\LocalData.csproj">
         <Project>{069a0850-03ca-427b-9453-b1522dd09d5b}</Project>
         <Name>LocalData</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Models\Models.csproj">
+        <Project>{8d3ac77d-09a6-470a-b5ff-d71c6bd54d76}</Project>
+        <Name>Models</Name>
       </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

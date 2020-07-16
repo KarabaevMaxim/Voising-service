@@ -4,7 +4,16 @@ using Models.Domain;
 
 namespace Core.Services
 {
-  public class LoginService
+  public interface ILoginService
+  {
+    User? AuthorizedUser { get; }
+
+    bool CheckAuthorize();
+
+    bool Login(string login, string password);
+  }
+  
+  public class LoginService : ILoginService
   {
     private readonly ISettingsStorage _settingsStorage;
     

@@ -1,10 +1,16 @@
+using System;
+using Android.App;
+using Android.Runtime;
 using Core.Android.Settings;
 using Core.Services;
 using LocalData;
+using MvvmCross.Platforms.Android.Core;
+using MvvmCross.Platforms.Android.Views;
 
 namespace App.Android
 {
-  public class Application : global::Android.App.Application
+  [Application]
+  public class Application : MvxAndroidApplication<MvxAndroidSetup<Bootstrapper>, Bootstrapper>
   {
     public override void OnCreate()
     {
@@ -25,6 +31,11 @@ namespace App.Android
     public override void OnTerminate()
     {
       base.OnTerminate();
+    }
+    
+    public Application(IntPtr javaReference, JniHandleOwnership transfer)
+      : base(javaReference, transfer)
+    {
     }
   }
 }
